@@ -1,0 +1,18 @@
+<div class = "nav-item d-sm-inline-block d-none">
+	<%= current_user.name %>
+</div>
+<div class = "nav-item">
+
+	<% if current_user.avatar.attached? %>
+		<%= image_tag current_user.avatar.variant(resize: "80x80"), class: "p-1 mx-3 host-icon nav-trigger" %>
+	<% else %>
+		<img class = "p-1 mx-3 host-icon nav-trigger", src = "https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png">
+	<% end %>
+	<ul class = "header-nav-menu">
+		<li><a class = "a-black" href="<%= new_room_path %>">ルーム登録</a></li>
+		<li><a class = "a-black" href="<%= reservations_index_path %>">予約済みルーム一覧</a></li>
+		<li><a class = "a-black" href="<%= root_path %>">登録済みルーム一覧</a></li>
+		<li><a class = "a-black" href="<%= users_account_path %>">設定</a></li>
+		<li><a class = "a-black" href="<%= destroy_user_session_path %>">ログアウト</a></li>
+	</ul>
+</div>

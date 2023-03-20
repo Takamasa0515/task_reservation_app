@@ -1,0 +1,51 @@
+<div class = "container reservation">
+	<h2>予約済み一覧</h2>
+	<div class ="table-responsive ">
+		<table class = "table align-middle  ReservationsTable">
+			<thead>
+				<tr>
+					<th class = "th-1">画像</th>
+					<th class = "th-2">施設名</th>
+					<th class = "th-3">紹介文</th>
+					<th class = "text-nowrap th-4">合計料金</th>
+					<th class = "text-nowrap th-5">チェックイン</th>
+					<th class = "text-nowrap th-6">チェックアウト</th>
+					<th class = "text-nowrap th-7">予約確定日時</th>
+					<th class = "th-8"></th>
+				</tr>
+			</thead>
+			<tbody>
+					<% @reservations.each do |reservation| %>
+						<tr>
+							<td>
+							<%= link_to room_path(reservation.room.id) do %>
+								<% if reservation.room.room_image.attached? %>
+									<%= image_tag room.room_image, class: "ReservationsTable" %>
+								<% else %>
+									<%= image_tag "default_room.jpg", class: "ReservationsTable" %>
+								<% end %>
+							<% end %>
+							</td>
+							<td><%= link_to reservation.room.room_name, room_path(reservation.room.id), class: "room-name-link" %></td>
+							<td><%= reservation.room.room_introduction %></td>
+							<td class = "text-nowrap">¥<%= reservation.total_amount %></td>
+							<td class = "text-nowrap"><%= reservation.start_date.strftime("%Y/%m/%d") %></td>
+							<td class = "text-nowrap"><%= reservation.end_date.strftime("%Y/%m/%d") %></td>
+							<td class = "text-nowrap"><%= reservation.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+							<td>
+							<div class = "dropdown ">
+								<div class = "d-flex align-items-center justify-content-center reservation-nav-trigger">
+									<img src="https://rails-02-sample.herokuapp.com/assets/icons/three-dot-menu-0c042cde96cc73e058e97d09a24944eb2914eb8c152d418dc6fc6964251fdaa2.svg">
+										<ul class = "reservation-nav-menu">
+											<li class = "DropdownMenu-item" ><%= link_to "再予約", reservations_edit_path(reservation) %></li>
+											<li class = "DropdownMenu-item DropdownMenu__item--danger reservation-destroy-trigger" ><%= link_to "予約を削除"%></li>
+										</ul>
+								</div>
+							</div>
+							</td>
+						</tr>
+					<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

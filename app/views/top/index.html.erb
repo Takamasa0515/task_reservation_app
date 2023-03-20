@@ -1,0 +1,53 @@
+<div class = "top">
+	<div class = "top-main">
+		<div class = "container">
+			<div class = "row col-lg-6">
+				<div class = "form-frame">
+					<div class = "form-area">
+						<p class = "form-area-title mb-4">Potepan Shareでまだ体験したことのない旅をしよう</p>
+						<%= label_tag "エリア"%>
+						<%= form_tag({controller:"searches",action:"area_search"}, method: :get) do %>
+						<%= text_field_tag :area_search,"",{placeholder: "東京", class: "form-control mb-4"} %>
+						<%= submit_tag '探す', :class => "form-control btn-primary mb-4"%>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class = "container">
+		<div class = "panel-area m-5">
+			<h1 class = "section-title">おすすめのエリア</h1>
+			<div class = "row">
+			<div class = "panel-item col-lg-3 col-6">
+				<span>東京</span>
+				<%= link_to(area_search_path(area_search: "東京"), method: :get) do %>
+					<img class = "panel-image"src="https://rails-02-sample.herokuapp.com/assets/home/recommend-area/tokyo.jpg">
+				<% end %>
+					<div class = "shadow"></div>
+			</div>
+			<div class = "panel-item col-lg-3 col-6">
+				<span>大阪</span>
+				<%= link_to(area_search_path(area_search: "大阪"), method: :get) do %>
+					<img class = "panel-image"src="https://rails-02-sample.herokuapp.com/assets/home/recommend-area/osaka.jpg" >
+				<% end %>
+					<div class = "shadow"></div>
+			</div>
+			<div class = "panel-item col-lg-3 col-6">
+				<span>京都</span>
+				<%= link_to(area_search_path(area_search: "京都"), method: :get) do %>
+					<img class = "panel-image"src="https://rails-02-sample.herokuapp.com/assets/home/recommend-area/kyoto.jpg" >
+				<% end %>
+					<div class = "shadow"></div>
+			</div>
+			<div class = "panel-item col-lg-3 col-6">
+				<span>札幌</span>
+				<%= link_to(area_search_path(area_search: "札幌"), method: :get) do %>
+					<img class = "panel-image"src="https://rails-02-sample.herokuapp.com/assets/home/recommend-area/sapporo.jpg" >
+				<% end %>
+					<div class = "shadow"></div>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>

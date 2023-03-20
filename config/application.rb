@@ -1,15 +1,20 @@
 require_relative "boot"
 
 require "rails/all"
+require "devise"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Test2
+module TaskApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    config.i18n.default_locale = :ja
+		config.active_storage.variant_processor = :mini_magick
+
+		config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
 
     # Configuration for the application, engines, and railties goes here.
     #

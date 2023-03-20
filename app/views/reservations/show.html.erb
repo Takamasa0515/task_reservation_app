@@ -1,0 +1,35 @@
+<div class = "container-fiuld user">
+	<div class = "row">
+		<div class = "col-md-12 user-view">
+			<div class = "user-view-box">
+				<%= form_with model: @reservation, url: root_path, data: { turbo: false }  do |f| %>
+				<div class = "update-content">
+					<div class = "row">
+						<%= f.label :room_name, "予約した部屋", class: 'col-md-3' %>
+						<div class = "col-md-9"><%= @room_name %></div>
+					</div>
+				</div>
+				<div class = "update-content">
+					<div class = "row">
+						<%= f.label :start_date, "開始日", class: 'col-md-3'%>
+						<div class = "col-md-9"><%= @reservation.start_date.strftime("%Y年%m月%d日") %></div>
+					</div>
+				</div>
+				<div class = "update-content">
+					<div class = "row">
+						<%= f.label :start_date, "終了日", class: 'col-md-3'%>
+						<div class = "col-md-9"><%= @reservation.end_date.strftime("%Y年%m月%d日") %></div>
+					</div>
+				</div>
+				<div class = "update-content">
+					<div class = "row">
+						<%= f.label :total_amount, "価格", class: 'col-md-3'%>
+						<div class = "col-md-9"><%= @reservation.total_amount %>円</div>
+					</div>
+				</div>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
