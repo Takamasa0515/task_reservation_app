@@ -16,7 +16,13 @@ class Room < ApplicationRecord
 		end
 	end
 
+	validates :room_name, presence: true
+	validates :room_introduction, presence: true
+	validates :room_price, presence: true
+	validates :room_address, presence: true
 
 	has_one_attached :room_image
 	has_many :reservations
+
+	belongs_to :user
 end

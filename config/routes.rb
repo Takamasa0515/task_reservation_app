@@ -19,7 +19,10 @@ Rails.application.routes.draw do
 	get "keyword_search" => "searches#keyword_search"
 
 
-  resources :rooms
+  resources :rooms do
+		get "registered", on: :collection
+	end
+	
 	get "/reservations/index" => "reservations#index"
 	post "/reservations/confirm" => "reservations#confirm"
 	post "/reservations/create" => "reservations#create"

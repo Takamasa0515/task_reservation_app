@@ -8,12 +8,12 @@ class RoomsController < ApplicationController
 	end
 
 	def create
-		@room = Room.new(params.require(:room).permit(:room_name, :room_introduction, :room_price, :room_address, :room_image))
+		@room = Room.new(params.require(:room).permit(:room_name, :room_introduction, :room_price, :room_address, :room_image, :user_id))
 		if @room.save
 			flash[:room_success] = "ルームを新規登録しました"
 			redirect_to :rooms
 		else
-			render "new"
+			render "new", status: :unprocessable_entity
 		end
 	end
 
@@ -22,6 +22,9 @@ class RoomsController < ApplicationController
 		@reservation = Reservation.new
 	end
 
-	def destroy
+	def registered
+		@user = current_user.id
+		@room = Room.new
+		@rooms = Room.where(user_id: @user)
 	end
 end

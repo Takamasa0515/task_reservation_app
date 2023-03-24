@@ -85,6 +85,18 @@ img {
   margin-bottom: 0;
 }
 
+.RoomErrorMessages {
+  color: #ff4949;
+  padding-left: 12rem;
+  font-size: 12px;
+  line-height: 16px;
+  margin-bottom: 0;
+}
+
+.field_with_errors {
+  display: contents;
+}
+
 .fa,
 .fab,
 .fal,
@@ -221,6 +233,7 @@ img {
 
 .ReservationsTable td:first-of-type img {
   width: 120px;
+  height: 69.188px;
 }
 
 .ReservationsTable td:first-of-type,
@@ -858,6 +871,7 @@ textarea.form-control {
 }
 
 .room-frame-inner {
+  height: 425px;
   border: 1px solid #e2e2e2;
   margin-bottom: 10px;
 }
@@ -899,9 +913,38 @@ textarea.form-control {
   letter-spacing: 1px;
 }
 
+.room-profile-introduction {
+  display: -webkit-box;
+  height: 72px;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 24px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
 .price-icon::before {
   content: "￥";
   padding-right: 3px;
+}
+
+.RoomDetailsHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.RoomDetailsHeader_link {
+  color: #0071c1;
+  display: flex;
+  grid-gap: 8px;
+  gap: 8px;
+  font-size: 18px;
+  line-height: 30px;
+  margin-bottom: 24px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .room-show {

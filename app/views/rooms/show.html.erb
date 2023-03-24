@@ -1,4 +1,9 @@
 <div class = " container room-show">
+	<div class = "RoomDetailsHeader">
+		<%= link_to :back, class: "RoomDetailsHeader_link" do %>
+			<img src="https://rails-02-sample.herokuapp.com/assets/icons/arrow-back-blue-5ba5838a3c587f1a4be9883cc3c9f90a6bbd0da4d559b6353d943dbd7de3bd06.svg" alt="戻るボタン">戻る
+		<% end %>
+	</div>
 	<div	class = "row">
 		<div class = "col-md-8">
 			<% if @room.room_image.attached? %>

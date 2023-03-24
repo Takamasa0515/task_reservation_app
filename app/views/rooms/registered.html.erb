@@ -1,0 +1,43 @@
+<div class = "container reservation">
+	<h2>登録済み一覧</h2>
+	<div class ="table-responsive ">
+		<table class = "table align-middle  ReservationsTable">
+			<thead>
+				<tr>
+					<th class = "th-1">画像</th>
+					<th class = "th-2">施設名</th>
+					<th class = "th-3">紹介文</th>
+					<th class = "text-nowrap th-4">料金</th>
+					<th class = "text-nowrap th-5">作成日</th>
+					<th class = "th-8"></th>
+				</tr>
+			</thead>
+			<tbody>
+					<% @rooms.each do |room| %>
+						<tr>
+							<td>
+							<%= link_to room_path(room.id) do %>
+								<% if room.room_image.attached? %>
+									<%= image_tag room.room_image, class: "ReservationsTable" %>
+								<% else %>
+									<%= image_tag "default_room.jpg", class: "ReservationsTable" %>
+								<% end %>
+							<% end %>
+							</td>
+							<td><%= link_to room.room_name, room_path(room.id), class: "room-name-link" %></td>
+							<td><%= room.room_introduction %></td>
+							<td>¥<%= room.room_price %>~</td>
+							<td><%= room.created_at.strftime("%Y/%m/%d") %></td>
+							<td>
+							<div class = "dropdown ">
+								<div class = "d-flex align-items-center justify-content-center reservation-nav-trigger">
+									<img src="https://rails-02-sample.herokuapp.com/assets/icons/three-dot-menu-0c042cde96cc73e058e97d09a24944eb2914eb8c152d418dc6fc6964251fdaa2.svg">
+								</div>
+							</div>
+							</td>
+						</tr>
+					<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

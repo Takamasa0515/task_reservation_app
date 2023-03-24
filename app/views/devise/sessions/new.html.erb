@@ -9,7 +9,7 @@
           <div class = "required-b col-2"></div>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control px-2 col-10", placeholder: "メールアドレス"   %>
         </div>
-
+				<%= render "devise/shared/error_messages" %>
         <div class="field form-row">
           <div class = "required-b col-2"></div>
           <%= f.password_field :password, autocomplete: "current-password", :class => "form-control px-2 col-10", placeholder: "パスワード"   %>

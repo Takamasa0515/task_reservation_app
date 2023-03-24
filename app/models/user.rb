@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable
 
 	has_one_attached :avatar
+	has_many :rooms
 	has_many :reservations
 
   validates :name, presence: true
