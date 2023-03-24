@@ -1,0 +1,27 @@
+<div class = "container device">
+  <div class = "device_frame">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <p class = "my-4">ログイン</p>
+    <div class = "device_inner">
+      <div class = "new-user">
+        <div class="field form-row">
+          <div class = "required-b col-2"></div>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control px-2 col-10", placeholder: "メールアドレス"   %>
+        </div>
+				<%= render "devise/shared/error_messages" %>
+        <div class="field form-row">
+          <div class = "required-b col-2"></div>
+          <%= f.password_field :password, autocomplete: "current-password", :class => "form-control px-2 col-10", placeholder: "パスワード"   %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "ログイン", :class => "form-control btn-primary my-4" %>
+        </div>
+  <% end %>
+
+<%= render "devise/shared/signup" %>
+      </div>
+    </div>
+  </div>
+</div>

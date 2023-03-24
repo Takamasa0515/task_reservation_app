@@ -1,0 +1,81 @@
+<div class = "container-field room-new">
+	<div class = "row">
+		<div class = "col-lg-2 room-nav room-nav-pc d-lg-block d-none">
+			<ul>
+				<li class = "active"><%= link_to "基本情報", :new_room %></li>
+			</ul>
+		</div>
+		<div class = "col-lg-2 room-nav room-nav-mobile d-lg-none">
+			<ul>
+				<li class = "active"><%= link_to "基本情報", :new_room %></li>
+			</ul>
+		</div>
+		<div class = "col-lg-10 room-view">
+			<div class = "room-view-box">
+				<div class = "room-new">
+					<div class = "room-register">
+						<div class = "row">
+							<h5>ルーム情報登録</h5>
+						</div>
+					</div>
+				<%= form_with model: @room do |f|%>
+					<div class = "update-content">
+						<div class = "row">
+							<%= f.label :room_name ,"ルーム名", class:"col-md-3 required-a" %>
+							<%= f.text_field :room_name, placeholder: "ルーム名を入力", class: "form-control mb-4 col-md-9" %>
+						</div>
+						<div>
+							<% if @room.errors.include?(:room_name) %>
+								<p class = "RoomErrorMessages" ><%= @room.errors.full_messages_for(:room_name).first %></p>
+							<% end %>
+						</div>
+					</div>
+					<div class = "update-content">
+						<div class = "row">
+							<%= f.label :room_introduction ,"ルーム詳細", class: "col-md-3 required-a"  %>
+							<%= f.text_area :room_introduction, placeholder: "ルーム詳細を入力", class: "form-control mb-4 col-md-9" %>
+						</div>
+						<div>
+							<% if @room.errors.include?(:room_introduction) %>
+								<p class = "RoomErrorMessages" ><%= @room.errors.full_messages_for(:room_introduction).first %></p>
+							<% end %>
+						</div>
+					</div>
+					<div class = "update-content">
+						<div class = "row">
+							<%= f.label :room_price ,"料金", class: "col-md-3 required-a"  %>
+							<%= f.number_field :room_price, placeholder: "一日あたりの料金を入力", class: "form-control mb-4 col-md-9" %>
+						</div>
+						<div>
+							<% if @room.errors.include?(:room_price) %>
+								<p class = "RoomErrorMessages" ><%= @room.errors.full_messages_for(:room_price).first %></p>
+							<% end %>
+						</div>
+					</div>
+					<div class = "update-content">
+						<div class = "row">
+							<%= f.label :room_address,"住所", class: "col-md-3 required-a"  %>
+							<%= f.text_field :room_address, placeholder: "住所を入力", class: "form-control mb-4 col-md-9" %>
+						</div>
+						<div>
+							<% if @room.errors.include?(:room_address) %>
+								<p class = "RoomErrorMessages" ><%= @room.errors.full_messages_for(:room_address).first %></p>
+							<% end %>
+						</div>
+					</div>
+					<div class = "update-content">
+						<div class = "row">
+							<%= f.label :room_image,"ルーム画像", class: "col-md-3"  %>
+							<%= f.file_field :room_image, class: "mb-4 col-md-9" %>
+						</div>
+					</div>
+					<div class = "update-content">
+						<%= f.submit "登録", class: "form-control col-md-2 btn btn-primary pointer mx-3"%>
+					</div>
+					<%= f.hidden_field :user_id, value: current_user.id %>
+				<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
